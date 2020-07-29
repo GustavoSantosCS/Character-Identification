@@ -1,4 +1,4 @@
-<h2 align="center"> Neural Network - Character Identification </h2>
+<h3 align="center"> Neural Network - Character Identification </h3>
 
 ## Equipe
  - Gustavo de Carvalho Santos
