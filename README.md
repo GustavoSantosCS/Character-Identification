@@ -15,7 +15,7 @@ Inicialmente o dataset será o THE MNIST DATABASE [disponível aqui.](http://yan
 A técnica escolhida para realizar a classificação do caractere desenhado no telefone é a Rede Neural. 
 </p>
 <p>
-Rede Neural é aplicação que tem como expiração o funcionamento do cérebro animal, o aplicativo é um conjunto de nó, nomeados de neurônios, organizados em camadas. Cada  neurônio realiza o processamento da entrada com o seu **peso** e propagam o resultado para os próximos neurônios. Esse processo se repete diversas vez durante o treinamento da rede neural onde o **peso** do neurônio é ajustado para melhorar a classificação do neurônio.
+Rede Neural é aplicação que tem como expiração o funcionamento do cérebro animal, o aplicativo é um conjunto de nó, nomeados de neurônios, organizados em camadas. Cada  neurônio realiza o processamento da entrada com o seu <b>peso</b> e propagam o resultado para os próximos neurônios. Esse processo se repete diversas vez durante o treinamento da rede neural onde o <b>peso</b> do neurônio é ajustado para melhorar a classificação do neurônio.
 </p>
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Neuralnetwork.png/330px-Neuralnetwork.png" height="206" width="330" alt="Unform" />
