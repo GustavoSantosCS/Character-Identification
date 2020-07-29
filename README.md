@@ -1,0 +1,1 @@
+# Rede-Neural---Indentifica-o-de-Caracteres
