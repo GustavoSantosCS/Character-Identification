@@ -17,13 +17,15 @@
         android:layout_height="118dp"
         android:layout_below="@+id/paintView"
         android:layout_marginTop="46dp"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/processar"
             android:layout_width="208dp"
             android:layout_height="69dp"
+            android:layout_marginLeft="100dp"
             android:background="@color/colorPrimary"
+            android:clickable="true"
             android:text="@string/Processar" />
     </LinearLayout>
 
