@@ -6,8 +6,25 @@
     android:layout_height="match_parent"
     tools:context="com.example.character_identification.MainActivity">
 
-    <com.ssaurel.mypaint.PaintView
+    <com.example.character_identification.PaintView
         android:id="@+id/paintView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="450dp" />
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_below="@+id/paintView"
+        android:layout_marginTop="46dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/processar"
+            android:layout_width="208dp"
+            android:layout_height="69dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/Processar" />
+    </LinearLayout>
+
 </RelativeLayout>

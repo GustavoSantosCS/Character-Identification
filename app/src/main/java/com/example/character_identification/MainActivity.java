@@ -35,14 +35,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.normal:
                 paintView.normal();
                 return true;
-            case R.id.emboss:
-                paintView.emboss();
-                return true;
-            case R.id.blur:
-                paintView.blur();
-                return true;
-            case R.id.clear:
-                paintView.clear();
+            case R.id.limpar:
+                paintView.limpar();
                 return true;
         }
 

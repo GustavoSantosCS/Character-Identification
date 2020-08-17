@@ -9,21 +9,17 @@ import android.graphics.EmbossMaskFilter;
 import android.graphics.MaskFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 
-import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
-
-
 public class PaintView extends View {
 
     public static int BRUSH_SIZE = 20;
-    public static final int DEFAULT_COLOR = Color.RED;
+    public static final int DEFAULT_COLOR = Color.BLACK;
     public static final int DEFAULT_BG_COLOR = Color.WHITE;
     private static final float TOUCH_TOLERANCE = 4;
     private float mX, mY;
@@ -77,24 +73,13 @@ public class PaintView extends View {
         blur = false;
     }
 
-    public void emboss() {
-        emboss = true;
-        blur = false;
-    }
-
-    public void blur() {
-        emboss = false;
-        blur = true;
-    }
-
-    public void clear() {
+    public void limpar() {
         backgroundColor = DEFAULT_BG_COLOR;
         paths.clear();
         normal();
         invalidate();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.save();
@@ -104,13 +89,7 @@ public class PaintView extends View {
             mPaint.setColor(fp.color);
             mPaint.setStrokeWidth(fp.strokeWidth);
             mPaint.setMaskFilter(null);
-
-            if (fp.emboos)
-                mPaint.setMaskFilter(mEmboss);
-            else if (fp.blur)
-                mPaint.setMaskFilter(mBlur);
-
-            mCanvas.drawPath((Path) fp.path, mPaint);
+            mCanvas.drawPath(fp.path, mPaint);
 
         }
 
@@ -118,10 +97,9 @@ public class PaintView extends View {
         canvas.restore();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void touchStart(float x, float y) {
         mPath = new Path();
-        FingerPath fp = new FingerPath(currentColor, emboss, blur, strokeWidth, (java.nio.file.Path) mPath);
+        FingerPath fp = new FingerPath(currentColor, emboss, blur, strokeWidth, mPath);
         paths.add(fp);
 
         mPath.reset();
@@ -145,7 +123,6 @@ public class PaintView extends View {
         mPath.lineTo(mX, mY);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
@@ -164,11 +141,8 @@ public class PaintView extends View {
                 touchUp();
                 invalidate();
                 break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + event.getAction());
         }
 
         return true;
     }
 }
-
