@@ -1,5 +1,6 @@
 package com.example.character_identification;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 
 public class PaintView extends View {
 
-    public static int BRUSH_SIZE = 75;
+    public static int BRUSH_SIZE = 100;
     public static final int DEFAULT_COLOR = Color.BLACK;
     public static final int DEFAULT_BG_COLOR = Color.WHITE;
     private static final float TOUCH_TOLERANCE = 4;
@@ -46,7 +47,7 @@ public class PaintView extends View {
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
-
+    private Context context = null;
     public PaintView(Context context) {
         this(context, null);
     }
@@ -62,7 +63,7 @@ public class PaintView extends View {
         mPaint.setStrokeCap(Paint.Cap.ROUND);
         mPaint.setXfermode(null);
         mPaint.setAlpha(0xff);
-
+        this.context = context;
         mEmboss = new EmbossMaskFilter(new float[]{1, 1, 1}, 0.4f, 6, 3.5f);
         mBlur = new BlurMaskFilter(5, BlurMaskFilter.Blur.NORMAL);
     }
@@ -92,14 +93,9 @@ public class PaintView extends View {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void salvar() {
-
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(
                 mBitmap, 28, 28, true);
-
-        
-
-        String imagem = MediaStore.Images.Media.insertImage(null, resizedBitmap, "/teste.png", "teste");
-
+        String imagem = MediaStore.Images.Media.insertImage(context.getContentResolver() , resizedBitmap, "test", "teste");
     }
 
 
@@ -113,7 +109,6 @@ public class PaintView extends View {
             mPaint.setStrokeWidth(fp.strokeWidth);
             mPaint.setMaskFilter(null);
             mCanvas.drawPath(fp.path, mPaint);
-
         }
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
