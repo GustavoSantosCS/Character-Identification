@@ -1,17 +1,23 @@
 package com.example.character_identification;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.FileNotFoundException;
 
 public class MainActivity extends AppCompatActivity {
 
     private PaintView paintView;
-
+    Button processar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.init(metrics);
+        processar = (Button) findViewById(R.id.processar);
+        processar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View view) {
+                paintView.salvar();
+            }
+        });
     }
 
     @Override
@@ -29,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -36,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 paintView.normal();
                 return true;
             case R.id.limpar:
-                paintView.limpar();
+                    paintView.limpar();
                 return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }
