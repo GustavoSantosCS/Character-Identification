@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView image;
     private Button btnProcessar;
     private Button btnLimpar;
+    private TextView previsao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         paintView = (PaintView) findViewById(R.id.paintView);
         btnLimpar = findViewById(R.id.btnLimpar);
         btnProcessar = findViewById(R.id.btnProcessar);
+        previsao = findViewById(R.id.previsao);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.init(metrics);
@@ -76,35 +79,9 @@ public class MainActivity extends AppCompatActivity {
         btnProcessar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                paintView.processar(image);
+                paintView.processar(image, previsao);
             }
         });
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.processar:
-                paintView.processar(image);
-                return true;
-            case R.id.limpar:
-                    paintView.limpar();
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-
 
 }

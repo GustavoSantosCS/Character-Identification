@@ -19,6 +19,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -122,16 +123,16 @@ public class PaintView extends View {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void processar(ImageView image) {
+    public void processar(ImageView image, TextView previsão) {
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(
                 mBitmap, 28, 28, false);
 
         image.setImageBitmap(resizedBitmap);
         convertBitmapToByteBuffer(resizedBitmap);
         tflite.run(imgData, result);
-        Toast toast = Toast.makeText(context, String.valueOf(argmax(result[0])), Toast.LENGTH_LONG);
-        toast.show();
+        int previsao = argmax(result[0]);
 
+        previsão.setText(String.format("A Previsão é que seja: %d", previsao));
     }
 
     private void convertBitmapToByteBuffer(Bitmap bitmap) {

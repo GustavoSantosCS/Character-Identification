@@ -5,6 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#20DEDEDE"
     tools:context="com.example.character_identification.MainActivity">
 
     <com.example.character_identification.PaintView
@@ -13,13 +14,12 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:paddingStart="5dp"
+
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
         android:paddingEnd="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/rederizado"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnLimpar"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/rederizado"
@@ -56,5 +56,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/previsao"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="456dp"
+        android:layout_marginEnd="24dp"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rederizado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
