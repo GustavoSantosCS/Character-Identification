@@ -48,24 +48,35 @@ public class MainActivity extends AppCompatActivity {
     Interpreter tflite;
     Interpreter.Options options = new Interpreter.Options();
     private PaintView paintView;
-    Button processar;
-
-
+    private ImageView image;
+    private Button btnProcessar;
+    private Button btnLimpar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        image = (ImageView) findViewById(R.id.rederizado);
         paintView = (PaintView) findViewById(R.id.paintView);
+        btnLimpar = findViewById(R.id.btnLimpar);
+        btnProcessar = findViewById(R.id.btnProcessar);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.init(metrics);
-        processar = (Button) findViewById(R.id.processar);
-        processar.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        initListeners();
+    }
+
+    private void initListeners() {
+        btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                paintView.salvar();
+                paintView.limpar();
+            }
+        });
+
+        btnProcessar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                paintView.processar(image);
             }
         });
     }
@@ -81,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.normal:
-                paintView.normal();
+            case R.id.processar:
+                paintView.processar(image);
                 return true;
             case R.id.limpar:
                     paintView.limpar();

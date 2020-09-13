@@ -18,6 +18,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 
 import androidx.annotation.RequiresApi;
@@ -97,7 +99,10 @@ public class PaintView extends View {
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
 
-        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        int limit = Math.min(width, height);
+        Toast.makeText(context, String.format("Canvas: %s: %s", limit, limit), Toast.LENGTH_LONG).show();
+
+        mBitmap = Bitmap.createBitmap(limit, limit, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
 
         currentColor = DEFAULT_COLOR;
@@ -117,15 +122,16 @@ public class PaintView extends View {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void salvar() {
+    public void processar(ImageView image) {
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(
-                mBitmap, 28, 28, true);
+                mBitmap, 28, 28, false);
 
+        image.setImageBitmap(resizedBitmap);
         convertBitmapToByteBuffer(resizedBitmap);
         tflite.run(imgData, result);
-        System.out.println(argmax(result[0]));
+        Toast toast = Toast.makeText(context, String.valueOf(argmax(result[0])), Toast.LENGTH_LONG);
+        toast.show();
 
-        String imagem = MediaStore.Images.Media.insertImage(context.getContentResolver() , resizedBitmap, "test", "teste");
     }
 
     private void convertBitmapToByteBuffer(Bitmap bitmap) {
