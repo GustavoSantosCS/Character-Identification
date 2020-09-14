@@ -27,7 +27,7 @@ O banco de dados MNIST contém 60.000 imagens de treinamento e 10.000 imagens de
 
 <p>A rede neural possui a seguinte estrutura:</p>
 <p align="center">
-<img src="http://phrempreendimentos.com.br/wp-content/uploads/2020/09/Teste.jpg" />
+<img src="https://i.ibb.co/hg0QYct/Untitled-Diagram.png" />
 </p>
 
 ## Resultados obtidos
@@ -86,7 +86,7 @@ Os seguinte resultados foram obtidos:
 </ul>
 
 <p>
-Com os resultados obtidos o Modelo 1 e o Modelo 2 foram os escolhidos para os experimentos. Os experimentos tinham como objetivo adicionar e remover camadas e incrementar ou decrementar o dropdow das camadas.
+Com os resultados obtidos o Modelo 1 e o Modelo 2 foram os escolhidos para os experimentos. Os experimentos tinham como objetivo adicionar e remover camadas e incrementar ou decrementar o dropout das camadas.
 Todos os exprementos realizado estão documentados <a href="https://drive.google.com/file/d/1et95cqNTDpnJH4UmRv8br0_51JhqALhY/view?usp=sharing">aqui</a>. Não foram testados todos as combinações possíveis, sempre que uma modificação apresentava variações positivas, a característica modifica era modifica novamente para um novo experimento. Em caso de resultados piores que o origina não se seguia com os experimentos.
 </p>
 <p>
@@ -98,7 +98,7 @@ A configuração do Modelo Escolhido:
 <img src="https://i.ibb.co/0rxCmyG/Modelo-Escolhido.png"/>
 </p>
 Tanto o Modelo 1 como o Modelo 2 possuem acurácias medias alta e que pouco flutuaram durante os experimentos! A maioria das flutuações eram para valores piores. O modelo de maior destaque foi o modelo apresentado na figura acima.
-Esse é uma variação do Modelo do Tensorflow, tem como diferencia um dropdown de 10% em vez dos 20% do modelo original. Outro fator que influenciou na escolha foi o tamanho da rede neural. Os dois modelos apresentaram resultados muitos proximos, logo optou-se pela rede de menor tamanho, conforme a indicação da literatura.
+Esse é uma variação do Modelo do Tensorflow, tem como diferencia um dropout de 10% em vez dos 20% do modelo original. Outro fator que influenciou na escolha foi o tamanho da rede neural. Os dois modelos apresentaram resultados muitos proximos, logo optou-se pela rede de menor tamanho, conforme a indicação da literatura.
 </br></br>
 
 ## Instruções de uso do software
