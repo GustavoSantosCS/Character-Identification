@@ -5,37 +5,40 @@
  - Paulo Henrique Rodrigues
 
 ## Problema
-<p>O projeto tem como objetivo criar uma rede neural que permita identificar caracteres desenhados. O sistema contara com uma aplicação mobile que permitira ao usuário desenho na tela do celular, esse por sua vez será enviado para o servido que irar classificar o desenho tentando classificar o caracteres desenhado pelo usuário retornar o resultado para o usuário.</p>
+<p>Reconhecimento de números de 0 à 9 através imagens em uma rede neural. Escolhemos este problema, por se tratar de uma aplicação que está cada vez mais presente no dia a dia, como por exemplo o reconhecimento de placas de veículos com base em imagens. Outra característica que nos desafiou a escolher e formular este problema, é a maneira infinita de possibilidades de escrever qualquer número, onde cada pessoa possui sua própria característica de escrita e como seria a identificação desta escrita numérica.</p>
 
 ## Dataset
-Inicialmente o dataset será o THE MNIST DATABASE [disponível aqui.](http://yann.lecun.com/exdb/mnist/)
+<p>THE MNIST DATABASE - http://yann.lecun.com/exdb/mnist/</p>
+
+<br>Dataset composto por uma coleção de imagens de dígitos manuscritos.<br/>
+O banco de dados MNIST contém 60.000 imagens de treinamento e 10.000 imagens de teste.</p>
+
+<p>Exemplo do dataset MNIST</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png" />
+
 
 ## Técnica
-<p>
-A técnica escolhida para realizar a classificação do caractere desenhado no telefone é a Rede Neural. 
-</p>
-<p>
-Rede Neural é aplicação que tem como expiração o funcionamento do cérebro animal, o aplicativo é um conjunto de nó, nomeados de neurônios, organizados em camadas. Cada  neurônio realiza o processamento da entrada com o seu <b>peso</b> e propagam o resultado para os próximos neurônios. Esse processo se repete diversas vez durante o treinamento da rede neural onde o <b>peso</b> do neurônio é ajustado para melhorar a classificação do neurônio.
-</p>
+<p>A solução para o problema descrito neste trabalho é a criação de um aplicativo Android nativo, onde o usuário escreve um dígito, é gerado uma imagem com o dígito escrito e redimensionado para 28x28 pixels. A imagem é dimensionada neste tamanho, pois são as dimensões das imagens compostas no banco de dados Mnist, permitindo uma comparação real e padrão com o dataset.</p>
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Neuralnetwork.png/330px-Neuralnetwork.png" height="206" width="330" alt="Unform" />
-</p>
+<p>Após a Geração da imagem, a mesma é fornecida como parâmetro a um método que executa a Rede Neural escrita em Python através da Biblioteca TensorFlow, onde resulta o dígito que a rede neural processou e definiu como mais parecido de acordo com o dataset</p>
 
-<p align="center">
-Diagrama simplificado de uma rede neural. 
-</p>
+<p>A rede neural possui a seguinte estrutura:</p>
+<img src="http://phrempreendimentos.com.br/wp-content/uploads/2020/09/Teste.jpg" />
 
-<p>
-<h3>Quais serão as entradas da rede neural?</h3>
-A entrada na rede neural será a imagem de um unico caracter numerico.
-</br>
+## Resultados obtidos
+<p>Nos links a seguir serão abordados 3 modelos de Redes Neurais, onde efetuamos os testes, medimos a acurária de cada. Posteriormente fizemos alterações e medimos novamente a acurácia</p>
 
-<h3>Quais serão as saídas da rede neural?</h3>
-As saidas são a porcentagem de classificação do caracter numerico informado. Ou seja, o caracter informado se assemelha em x% com o caracter Y, z% com o caracter T assim para todos os numeros de 1 a 9.
-</br>
+<p>https://drive.google.com/file/d/1et95cqNTDpnJH4UmRv8br0_51JhqALhY/view?usp=sharing</p>
+<p>https://drive.google.com/file/d/1mCjqY9GYMRAedodwCM7bxAQiVbMuZKIq/view?usp=sharing</p>
 
-<h3>Para validar a rede neural sera usado qual estrategia de validação?</h3>
-A validação cruzada usado para validar a rede sera Validação Cruzada K-Fold
-</br>
-</p>
+## Instruções de uso do software
+
+<p>Na pasta executável, localizada neste repositório,  baixar o arquivo xxxxx.apk, e instalar em um smartphone Android. Após instalação abrirá o aplicativo  conforme a tela a seguir:</p>
+
+<img src="http://phrempreendimentos.com.br/wp-content/uploads/2020/09/WhatsApp-Image-2020-09-13-at-17.52.19-e1600106821265.jpeg"/>
+
+## Vídeo
+<p>https://web.microsoftstream.com/video/fcb67f3e-0ab4-46a3-9590-0f2898b743f1</P>
+
+
