@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Character-Identification</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="Processar">Processar</string>
+</resources>
