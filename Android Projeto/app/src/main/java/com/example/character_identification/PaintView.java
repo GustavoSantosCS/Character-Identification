@@ -164,7 +164,7 @@ public class PaintView extends View {
 
         float maxProb = 0.0f;
 
-        for (int i=0; i<probs.length; i++){
+        for (int i=0; i< probs.length; i++){
             if(probs[i] > maxProb){
                 maxProb = probs[i];
                 maxIds = i;
